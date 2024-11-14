@@ -4,7 +4,7 @@ Rapport : [Google Docs](https://docs.google.com/document/d/1aSimT0o8QkMoVoalPzR4
 
 ## Execution
 
-Version de Java : 22
+Version de Java : 21
 
 ```bash
 java -jar MonopolyEI2.jar
