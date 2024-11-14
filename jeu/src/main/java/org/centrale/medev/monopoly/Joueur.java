@@ -23,7 +23,19 @@ public class Joueur {
         this.enPrison = 0;
     }
 
+    public Integer nbGares() {
+
+    }
+
+    public void paiement(Joueur j, Integer x) {
+
+    }
+
     public static int lanceLeDe() {
         return ((int) Math.floor(Math.random()*6))+1;
+    }
+
+    public void tourDeJeu() {
+        
     }
 }
