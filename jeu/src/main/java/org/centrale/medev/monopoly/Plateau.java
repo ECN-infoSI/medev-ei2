@@ -40,23 +40,7 @@ public class Plateau {
         System.out.println("Inserez le nombre de joueurs: ");  
         
         try {
-            Scanner sc = new Scanner(System.in);
-            nbJoueursInit = sc.nextInt();
 
-            while (nbJoueursInit < 2 || nbJoueursInit > 10) {
-                System.out.println("Le minimum de joueurs est 2 et le maximum est 10. \nInserez le nombre de joueurs: ");
-                nbJoueursInit = sc.nextInt();           
-            }
-            
-            sc = new Scanner(System.in);
-            for (int i = 0; i < nbJoueursInit; i++) {
-                System.out.println("Inserez le nom du joueur " + (i+1) + ": ");
-                String nomJoueur = sc.nextLine();
-                // Créer chaque joueur
-                Joueur j = new Joueur(nomJoueur, this);
-                joueurs.add(j);
-            }
-            
             // Lire le fichier commum "Liste_Cases.txt" qui décrit un tableau Monopoly
             InputStream inputStream = Plateau.class.getResourceAsStream("/Liste_Cases.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
@@ -110,7 +94,23 @@ public class Plateau {
                     } 
                     
                 }
-            
+            Scanner sc = new Scanner(System.in);
+            nbJoueursInit = sc.nextInt();
+
+            while (nbJoueursInit < 2 || nbJoueursInit > 10) {
+                System.out.println("Le minimum de joueurs est 2 et le maximum est 10. \nInserez le nombre de joueurs: ");
+                nbJoueursInit = sc.nextInt();
+            }
+            sc = new Scanner(System.in);
+
+            for (int i = 0; i < nbJoueursInit; i++) {
+                System.out.println("Inserez le nom du joueur " + (i+1) + ": ");
+                String nomJoueur = sc.nextLine();
+                // Créer chaque joueur
+                Joueur j = new Joueur(nomJoueur, this);
+                joueurs.add(j);
+            }
+
         } catch(NumberFormatException e) {
             System.out.println("Il faut inserer un numéro.");
         }                  

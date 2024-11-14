@@ -11,19 +11,19 @@ public class Evenement extends Case{
 
 
     public int getPosition() {
-        return getPosition();
+        return super.getPosition();
     }
 
     public String getNom() {
-        return getNom();
+        return super.getNom();
     }
 
     public void setPosition(int position) {
-        this.setPosition(position);
+        super.setPosition(position);
     }
 
     public void setNom(String nom) {
-        this.setNom(nom);
+        super.setNom(nom);
     }
 
     public void effet(Joueur joueur) throws NoMoreMoneyException {

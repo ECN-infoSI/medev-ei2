@@ -13,9 +13,7 @@ import java.io.IOException;
 public class Jeu {
     public static void main(String[] args) throws IOException {
         Plateau plateau = new Plateau();
-	    
-	plateau.initPlateau();
-	plateau.tourDeJeu();
+	    plateau.tourDeJeu();
 
 	System.out.println("Fin de la partie, merci d'avoir utilisé notre jeu !");
     }
