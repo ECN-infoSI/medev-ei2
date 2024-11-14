@@ -9,10 +9,26 @@ package org.centrale.medev.monopoly;
  * @author hanss
  */
 public class Joueur {
+    /**
+     * Nom du joueur
+     */
     private String nom;
+    /**
+     * Fortune du joueur
+     */
     private Integer fortune;
+    /**
+     * Plateau associé au joueur
+     */
     private Plateau plateau;
+    /**
+     * Position du joueur sur le plateau
+     * Le plateau compte 40 cases
+     */
     private Integer position;
+    /**
+     * Temps restant immobilisé en prison
+     */
     private Integer enPrison;
 
     public Joueur(String nom, Plateau plateau) {
