@@ -134,12 +134,12 @@ public class Joueur {
     }
 
 
-    private void actionCase(Integer valeurDe, Case case){
-        if (case instanceof AllerPrison){
-            enPrison = 3;
-        } else if (case instanceof Achetable and case.getProprietaire() == null){
+    private void actionCase(Integer valeurDe, Case case_action){
+        if (case_action instanceof AllerPrison){
+            this.goToPrison();
+        } else if (case_action instanceof Achetable and case_action.getProprietaire() == null){
             if ((valeurDe)%2 == 1){
-                this.achete(case);
+                this.achete(case_action);
             }
         }
     }
@@ -170,6 +170,7 @@ public class Joueur {
 
         if (nbLances == 3 && !finTour) {
             this.goToPrison();
+            return true;
         } else if (this.getEnPrison()>0) {
             if (!finTour) {
                 this.nouvellePos(tot);
@@ -177,7 +178,7 @@ public class Joueur {
         } else {
             this.nouvellePos(tot);
         }
-
+        actionCase(tot, this.position);
         
         return finTour;
     }
