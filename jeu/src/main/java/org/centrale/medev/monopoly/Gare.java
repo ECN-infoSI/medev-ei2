@@ -2,26 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.monopoly;
+package org.centrale.medev.monopoly;
 
 /**
  *
  * @author Thomas
  * 
  */
-public class Gare {
+public class Gare extends Achetable {
+
+    final int baseLoyer = 2500; 
 
     public Gare(){
         super();
     }
 
-    public Gare(string n, int pos){
-        super(n, pos);
+    public Gare(string n, int pos, int p, Joueur j){
+        super(n, pos, p, j);
     }
 
-    public int calculLoyer(Plateau p, Joueur j){
-        return 2500*p.nbGares(j)
+    public int calculLoyer(){
+        if !(proprietaire == null){
+            return baseLoyer*proprietaire.nbGares();
+        } else {
+            return 0;
+        }
     }
-    
-
 }
