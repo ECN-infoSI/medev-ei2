@@ -84,7 +84,7 @@ public class Joueur {
     }
 
     public void setPosition(Integer position) {
-        this.setPosition(this.getPlateau().get(position));
+        this.setPosition(this.getPlateau().getPlateau().get(position));
     }
 
     public Integer getEnPrison() {
@@ -100,7 +100,7 @@ public class Joueur {
      * @return Nombre de gares possédées
      */
     public Integer nbGares() {
-        return plateau.nbGares(this);
+        return plateau.nbGare(this);
     }
 
     
@@ -145,18 +145,18 @@ public class Joueur {
 
     private void actionCase(Integer valeurDe, Case case_action) throws NoMoreMoneyException {
         if (case_action instanceof Evenement) {
-            case_action.effet(this);
-        } else if ((case_action instanceof Achetable) && case_action.getProprietaire() == null) {
+            ((Evenement)case_action).effet(this);
+        } else if ((case_action instanceof Achetable) && ((Achetable)case_action).getProprietaire() == null) {
             if ((valeurDe) % 2 == 1) {
                 this.achete((Achetable) case_action);
-            } else if (case_action instanceof Achetable && case_action.getProprietaire() != null){
+            } else if (case_action instanceof Achetable && ((Achetable)case_action).getProprietaire() != null){
                 this.payeLoyer((Achetable) case_action);
             }
-        } else if ((case_action instanceof Rue) && case_action.getProprietaire() == this) {
-            if (case_action.getNbM()<4 && case_action.getNbH()==0){
-                case_action.construireMaison(1);
-            } else if(case_action.getNbM()==4) {
-                case_action.construireHotel();
+        } else if ((case_action instanceof Rue) && ((Rue)case_action).getProprietaire() == this) {
+            if (((Rue)case_action).getNbM()<4 && ((Rue)case_action).getNbH()==0){
+                ((Rue)case_action).construireMaison(1);
+            } else if(((Rue)case_action).getNbM()==4) {
+                ((Rue)case_action).construireHotel();
             }
         }
     }

@@ -21,6 +21,10 @@ public class Gare extends Achetable {
         super(n, pos, p, j);
     }
 
+    public Gare(String caseNom, int position, int valeur) {
+        super(caseNom, position, valeur);
+    }
+
     public int calculLoyer(){
         if (this.getProprietaire() == null){
             return baseLoyer*this.getProprietaire().nbGares();

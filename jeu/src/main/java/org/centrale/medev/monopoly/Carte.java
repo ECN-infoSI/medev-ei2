@@ -7,14 +7,14 @@ public class Carte extends Evenement {
     private Joueur joueur ;
     
     public Carte(String nom, int position){
-        super(nom, position) ;
+        super(position, nom);
     }
     
     public Carte(){
         super() ;
     }
     
-    public void effet(){
+    public void effet() throws NoMoreMoneyException {
         
         if (this.getNom() == "aller_a"){
             Random random = new Random() ;

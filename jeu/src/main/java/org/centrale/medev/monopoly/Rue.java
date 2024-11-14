@@ -25,6 +25,10 @@ public class Rue extends Achetable{
         this.nbH = 0;
     }
 
+    public Rue(String nom, int position, int prix) {
+        super(nom, position, prix);
+    }
+
     public int getNbM() {
         return nbM;
     }
@@ -42,12 +46,12 @@ public class Rue extends Achetable{
     }
     
     public void construireMaison(int nbMConstruite){
-        if (this.proprietaire.getFortune() >= nbMConstruite*this.coutM && nbMConstruite + this.nbM <= 4){
+        if (this.getProprietaire().getFortune() >= nbMConstruite*this.coutM && nbMConstruite + this.nbM <= 4){
             int newNbM = this.getNbM() + nbMConstruite;
             this.setNbM(newNbM);
-            int newFortune = this.proprietaire.getFortune() - nbMConstruite*150;
-            this.proprietaire.setFortune(newFortune);
-            System.out.println(this.proprietaire.getNom()+" a construit "+nbMConstruite+" maison(s).");
+            int newFortune = this.getProprietaire().getFortune() - nbMConstruite*150;
+            this.getProprietaire().setFortune(newFortune);
+            System.out.println(this.getProprietaire().getNom()+" a construit "+nbMConstruite+" maison(s).");
         } else {
             System.out.println("Le nombre de maisons rentrées n'est pas correct");
         }
@@ -55,12 +59,12 @@ public class Rue extends Achetable{
     
     public void construireHotel(){
         int cout = (5 - this.nbM)*this.coutM;
-        if (this.proprietaire.getFortune() >= cout && this.nbH == 0){
+        if (this.getProprietaire().getFortune() >= cout && this.nbH == 0){
             this.setNbH(1);
             this.setNbM(0);
-            int newFortune = this.proprietaire.getFortune() - cout;
-            this.proprietaire.setFortune(newFortune);
-            System.out.println(this.proprietaire.getNom()+" a construit un hôtel.");
+            int newFortune = this.getProprietaire().getFortune() - cout;
+            this.getProprietaire().setFortune(newFortune);
+            System.out.println(this.getProprietaire().getNom()+" a construit un hôtel.");
         } else {
             System.out.println("Le nombre d'hôtel rentré n'est pas correct");
         }

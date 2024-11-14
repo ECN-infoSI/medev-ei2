@@ -4,12 +4,14 @@
 
 package org.centrale.medev.monopoly;
 
+import java.io.IOException;
+
 /**
  * Script Principal du jeu
  * @author simon
  */
 public class Jeu {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Plateau plateau = new Plateau();
 	    
 	plateau.initPlateau();

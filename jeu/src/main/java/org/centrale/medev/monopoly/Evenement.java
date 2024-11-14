@@ -3,29 +3,30 @@ package org.centrale.medev.monopoly ;
 public class Evenement extends Case{
     
     public Evenement(int position, String nom){
-        super(position,nom);
+        super(nom, position);
     }
     public Evenement(){
         super() ;
     }
-    public Evenement(Evenement e){
-        super(e) ;
-    }
+
 
     public int getPosition() {
-        return position;
+        return getPosition();
     }
 
     public String getNom() {
-        return nom;
+        return getNom();
     }
 
     public void setPosition(int position) {
-        this.position = position;
+        this.setPosition(position);
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        this.setNom(nom);
     }
-    
+
+    public void effet(Joueur joueur) throws NoMoreMoneyException {
+
+    }
 }

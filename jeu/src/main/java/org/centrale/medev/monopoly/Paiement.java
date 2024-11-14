@@ -7,7 +7,7 @@ public class Paiement extends Evenement {
     public Joueur joueur ;
     
     public Paiement(String nom, int position, int prix){
-        super(nom, position) ;
+        super(position, nom);
         this.prix = prix ;
     }
 
@@ -16,7 +16,7 @@ public class Paiement extends Evenement {
         this.prix = 2000 ;
     }
     
-    public void effet(){
+    public void effet() throws NoMoreMoneyException {
         joueur.paiement(prix) ;
     }
     

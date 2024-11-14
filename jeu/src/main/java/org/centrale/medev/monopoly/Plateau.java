@@ -26,7 +26,15 @@ public class Plateau {
         potCommun = 0;
         initPlateau();
     }
-    
+
+    public ArrayList<Case> getPlateau() {
+        return plateau;
+    }
+
+    public void setPlateau(ArrayList<Case> plateau) {
+        this.plateau = plateau;
+    }
+
     public void initPlateau() throws FileNotFoundException, IOException{
         // Crée la liste de joueurs
         System.out.println("Inserez le nombre de joueurs: ");  
@@ -45,7 +53,7 @@ public class Plateau {
                 System.out.println("Inserez le nom du joueur " + (i+1) + ": ");
                 String nomJoueur = sc.nextLine();
                 // Créer chaque joueur
-                Joueur j = new Joueur(nomJoueur);
+                Joueur j = new Joueur(nomJoueur, this);
                 joueurs.add(j);
             }
             
@@ -80,12 +88,12 @@ public class Plateau {
                                 plateau.add(n);
                                 }
                             case "Prison" -> {
-                                Prison n = new Prison(position);
+                                Prison n = new Prison("Prison", position);
                                 plateau.add(n);
                                 }
                             case "Payement" -> {
                                 int valeur = Integer.parseInt(parties[3]);
-                                Payement n = new Payement(caseNom, position, valeur);
+                                Paiement n = new Paiement(caseNom, position, valeur);
                                 plateau.add(n);
                                 }
                             case "Carte" -> {
@@ -93,7 +101,7 @@ public class Plateau {
                                 plateau.add(n);
                                 }
                             case "AllerPrison" -> {
-                                AllerPrison n = new AllerPrison(position);
+                                AllerPrison n = new AllerPrison("AllerPrison", position);
                                 plateau.add(n);
                                 }
                             default -> {

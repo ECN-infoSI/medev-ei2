@@ -20,6 +20,11 @@ public class Achetable extends Case {
         proprietaire = null;
     }
 
+    public Achetable(String nom, int position, int prix) {
+        super(nom, position);
+        this.prix = prix;
+    }
+
     public Achetable(String n, int pos, int p, Joueur j){
         super(n, pos);
         prix = p;

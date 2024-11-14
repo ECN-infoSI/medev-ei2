@@ -4,7 +4,7 @@ public class AllerPrison extends Evenement{
     private Joueur joueur ;
     
     public AllerPrison(String nom, int position){
-        super(nom, position);
+        super(position, nom);
     }
     
     public AllerPrison(){
