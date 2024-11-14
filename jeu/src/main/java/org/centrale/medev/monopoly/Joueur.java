@@ -170,6 +170,27 @@ public class Joueur {
         //TODO faire des actions en fonction de la case (proprio...)
         return finTour;
     }
+    /**
+     * Permet au joueur de payer le loyer au joueur de la case sur laquelle il est tombe si elle a un proprietaire
+     * @param caseOccupee correspond a la case sur laquelle se situe le joueur et qu'elle appartient a un autre joueur
+     */
+    public void payeLoyer(Achetable caseOccupee){
+        this.paiement(caseOccupee.getPropritaire(),caseOccupee.calculLoyer());
+    }
+    /**
+     * Permet d'acheter une case lorsque le joueur a une fortune assez grande
+     * @param caseOccupee  correspond a la case sur laquelle se situe le joueur et qu'elle n'appartient a personne
+     */
+    public void achete(Achetable caseOccupee){
+        int prix = caseOccupee.getPrix();
+        
+        if (this.fortune >= prix){
+            this.fortune-=prix;
+            caseOccupee.setProprietaire(this);
+        }
+        
+    }
+    
 
     /**
      * Affiche la position du Joueur
