@@ -13,17 +13,20 @@ import java.util.Scanner;
 import java.io.*;
 
 
+
 public class Plateau {
     private ArrayList<Case> plateau;
     private LinkedList<Joueur> joueurs;
+    private int potCommun;
     
-    public Plateau() throws FileNotFoundException {
+    public Plateau() throws IOException {
         plateau = new ArrayList<Case>();
         joueurs = new LinkedList<Joueur>();
+        potCommun = 0;
         initPlateau();
     }
     
-    public void initPlateau() throws FileNotFoundException{
+    public void initPlateau() throws FileNotFoundException, IOException{
         System.out.println("Inserez le nombre de joueurs: ");
         Scanner sc = new Scanner(System.in);
         
@@ -41,8 +44,8 @@ public class Plateau {
                 joueurs.add(j);
             }
             
-            String fileName = "Liste_Cases.txt";
-            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            InputStream inputStream = Plateau.class.getResourceAsStream("/Liste_Cases.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                 String line;
                 while ((line = br.readLine()) != null) {
                     // Dividir la línea en dos partes: nombre de clase y atributo nombre
@@ -51,7 +54,9 @@ public class Plateau {
                         String className = parties[0];
                         String caseNom = parties[1];
                         int position = Integer.parseInt(parties[2]);
+                        System.out.println(position);
                         if (null != className) switch (className) {
+                            
                             case "Gare" -> {
                                 int valeur = Integer.parseInt(parties[3]);
                                 Gare n = new Gare(caseNom, position, valeur);
@@ -90,22 +95,45 @@ public class Plateau {
                     } 
                     
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             
         } catch(NumberFormatException e) {
             System.out.println("Il faut inserer un numéro.");
-        }
-            
+        }                  
     }
     
-    public int nbGares(Joueur j) {
-        return 0;
-    } 
+
+    public int nbGare(Joueur j) {
+        int count = 0;
+        for (Case c : plateau) {
+            // Check if the case is an instance of Gare
+            if (c instanceof Gare) {
+                Gare gare = (Gare) c; // Cast to Gare
+                // Check if the owner of this Gare is the specified player
+                if (gare.getProprietaire() == j) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
     
-    public void affiche(){
-        
+    public void affiche() {
+        System.out.println("=== État du Plateau ===");
+
+        // Display Cases on the Plateau
+        System.out.println("Cases du plateau:");
+        for (Case c : plateau) {
+            System.out.println(" - " + c.toString());
+        }
+
+        // Display Players
+        System.out.println("\nJoueurs:");
+        for (Joueur j : joueurs) {
+            System.out.println(" - " + j.toString());
+        }
+
+        // Display Pot Commun
+        System.out.println("\nPot Commun: " + potCommun + "€");
     }
     
     public Case avance(Case c, int d){
