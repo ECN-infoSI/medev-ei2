@@ -204,7 +204,7 @@ public class Joueur {
      * @param caseOccupee correspond a la case sur laquelle se situe le joueur et qu'elle appartient a un autre joueur
      */
     public void payeLoyer(Achetable caseOccupee)  throws NoMoreMoneyException {
-        this.paiement(caseOccupee.getPropritaire(),caseOccupee.calculLoyer());
+        this.paiement(caseOccupee.getProprietaire(),caseOccupee.calculLoyer());
     }
     /**
      * Permet d'acheter une case lorsque le joueur a une fortune assez grande
