@@ -10,6 +10,18 @@ package com.mycompany.monopoly;
  * 
  */
 public class Gare {
+
+    public Gare(){
+        super();
+    }
+
+    public Gare(string n, int pos){
+        super(n, pos);
+    }
+
+    public int calculLoyer(Plateau p, Joueur j){
+        return 2500*p.nbGares(j)
+    }
     
 
 }
