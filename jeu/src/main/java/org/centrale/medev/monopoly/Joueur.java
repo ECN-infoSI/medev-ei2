@@ -102,17 +102,14 @@ public class Joueur {
      * @param joueur Joueur à payer
      * @param somme Montant à payer
      */
-    public void paiement(Joueur adversaire, Integer somme) {
-        
-        try{
+    public void paiement(Joueur adversaire, Integer somme) throws NoMoreMoneyException {
+
             if (fortune >= somme){
                         fortune-=somme;
                         adversaire.setFortune(getFortune()+somme);
+            }else{
+                throw new NoMoreMoneyException("Pas assez d'argent");
             }
-        }
-        catch(NoMoreMoney exc){
-            System.out.println("vous n'avez pas assez d'argent");
-        }
         
     }
 
