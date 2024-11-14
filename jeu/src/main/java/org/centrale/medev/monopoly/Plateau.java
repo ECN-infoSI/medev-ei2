@@ -9,7 +9,5 @@ package org.centrale.medev.monopoly;
  * @author hanss
  */
 public class Plateau {
-    public Integer nbGares(Joueur j) {
-        
-    }
+    
 }
