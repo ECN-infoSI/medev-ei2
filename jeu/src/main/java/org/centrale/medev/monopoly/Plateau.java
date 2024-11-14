@@ -171,14 +171,12 @@ public class Plateau {
                 affiche();
                 
                 // Appeler la méthode tourDeJeu du joueur pour effectuer son tour
+                try{
                 player.tourDeJeu();
-
-                // Vérifier si la fortune du joueur est inférieure ou égale à 0 (ce qui indique qu'il est vaincu).
-                if (player.getFortune() <= 0) {
+                }catch (NoMoreMoneyException ex){
+                    // Vérifier si la fortune du joueur est inférieure ou égale à 0 (ce qui indique qu'il est vaincu).
+                    iterator.remove(); // Retirer le joueur vaincu du jeu en utilisant l'itérateur
                     System.out.println("Le joueur " + player.getNom() + " est éliminé (fortune <= 0).");
-
-                    // Retirer le joueur vaincu du jeu en utilisant l'itérateur
-                    iterator.remove();
                 }
             }
             break;
