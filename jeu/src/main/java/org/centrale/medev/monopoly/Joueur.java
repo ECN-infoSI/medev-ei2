@@ -99,8 +99,8 @@ public class Joueur {
 
     /**
      * Effectue le paiement de x au Joueur j
-     * @param j Joueur à payer
-     * @param x Montant à payer
+     * @param joueur Joueur à payer
+     * @param somme Montant à payer
      */
     public void paiement(Joueur adversaire, Integer somme) {
         
