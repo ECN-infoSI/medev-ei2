@@ -15,8 +15,8 @@ public class Compagnie extends Achetable {
         super();
     }
 
-    public Compagnie(string n, int pos){
-        super(n, pos);
+    public Compagnie(String n, int pos, int p, Joueur j){
+        super(n, pos, p, j);
     }
 
     public int calculLoyer(Joueur j){

@@ -24,22 +24,6 @@ public class Case {
         this.position = 0;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
     public String toString(){
         String msg = this.nom ;
         return msg;
