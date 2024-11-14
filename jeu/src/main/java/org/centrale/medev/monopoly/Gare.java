@@ -17,13 +17,16 @@ public class Gare extends Achetable {
         super();
     }
 
-    public Gare(string n, int pos, int p, Joueur j){
+    public Gare(String n, int pos, int p, Joueur j){
         super(n, pos, p, j);
     }
 
+    /**
+     *  
+     */
     public int calculLoyer(){
-        if !(this.proprietaire == null){
-            return baseLoyer*proprietaire.nbGares();
+        if (this.getProprietaire() == null){
+            return baseLoyer*this.getProprietaire().nbGares();
         } else {
             return 0;
         }
