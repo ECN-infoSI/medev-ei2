@@ -18,6 +18,7 @@ public class Case {
         this.nom = nom;
         this.position = position;
     }
+    
     public Case(){
         this.nom = "";
         this.position = 0;
