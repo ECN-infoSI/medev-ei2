@@ -47,9 +47,9 @@ public class Rue extends Achetable{
     }
     
     public int calculLoyer(){
-        int a = 0;
-        int b = 0;
-        int base = 0;
+        int a = 200;
+        int b = 1000;
+        int base = 100;
         int loyer = this.getNbH()*a + this.getNbM()*b;
         if (loyer==0){loyer = base;}
         return loyer;
