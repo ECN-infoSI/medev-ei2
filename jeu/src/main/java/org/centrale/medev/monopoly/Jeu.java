@@ -15,6 +15,6 @@ public class Jeu {
 	plateau.initPlateau();
 	plateau.tourDeJeu();
 
-	System.out.println("Fin de la partie, merci d'avoir utiliser notre jeu !");
+	System.out.println("Fin de la partie, merci d'avoir utilisé notre jeu !");
     }
 }
