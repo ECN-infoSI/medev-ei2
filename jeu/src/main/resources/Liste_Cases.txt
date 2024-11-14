@@ -1,0 +1,40 @@
+Payement Départ 0 200
+Rue Avenue_de_Méditerranée 1 -60
+Carte Communauté 2 
+Rue Avenue_de_la_Baltique 3 -60
+Payement Impôts_sur_le_revenu 4 -200
+Gare Gare_Montparnasse 5 -200
+Rue Rue_de_Vaugirard 6 -100
+Carte Chance 7 
+Rue Rue_de_Courcelles 8 -100
+Rue Avenue_de_la_République 9 -120
+Prison Prison 10 
+Rue Boulevard_de_la_Villette 11 -140
+Compagnie Compagnie_de_distribution 12 -150
+Rue Avenue_de_Neuilly 13 -140
+Rue Rue_de_Paradis 14 -160
+Gare Gare_de_Lyon 15 -200
+Rue Avenue_Mozart 16 -180
+Carte Communauté 17 
+Rue Boulevard_Saint-Michel 18 -180
+Rue Place_Pigalle 19 -200
+Payement Parc_Gratuit 20 0
+Rue Avenue_Matignon 21 -220
+Carte Chance 22 
+Rue Boulevard_Malesherbes 23 -220
+Rue Avenue_Henri-Martin 24 -240
+Gare Gare_du_Nord 25 -200
+Rue Faubourg_Saint-Honoré 26 -260
+Rue Place_de_la_Bourse 27 -260
+Compagnie Compagnie_des_eaux 28 -150
+Rue Rue_La_Fayette 29 -280
+AllerPrison Allez_en_prison 30 
+Rue Avenue_de_Breteuil 31 -300
+Rue Avenue_Foch 32 -300
+Carte Chance 33 
+Rue Boulevard_des_Capucines 34 -320
+Gare Gare_Saint-Lazare 35 -200
+Carte Chance 36 
+Rue Avenue_des_Champs-Élysées 37 -350
+Payement Taxe_de_Luxe 38 -100
+Rue Rue_de_la_Paix 39 -400
