@@ -21,11 +21,11 @@ public class Joueur {
      * Plateau associé au joueur
      */
     private Plateau plateau;
+    private Case position;
     /**
      * Position du joueur sur le plateau
      * Le plateau compte 40 cases
      */
-    private Integer position;
     /**
      * Temps restant immobilisé en prison
      */
@@ -73,11 +73,11 @@ public class Joueur {
         this.plateau = plateau;
     }
 
-    public Integer getPosition() {
+    public Case getPosition() {
         return this.position;
     }
 
-    public void setPosition(Integer position) {
+    public void setPosition(Case position) {
         this.position = position;
     }
 
@@ -129,7 +129,7 @@ public class Joueur {
      * @param x Nombre de cases
      */
     private void nouvellePos(Integer x) {
-        this.setPosition((this.getPosition() + x)%40);
+        this.setPosition(plateau.avance(this.getPosition(), x));
     }
 
     /**
