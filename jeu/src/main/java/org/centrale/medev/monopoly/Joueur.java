@@ -195,4 +195,16 @@ public class Joueur {
     public void affiche() {
         System.out.println("Le joueur " + this.getNom() + " est en " + this.getPosition().getPosition());
     }
+
+    @Override
+    public String toString() {
+        String string = "nom='" + nom +
+                ", fortune=" + fortune +
+                ", position=" + position.toString();
+        if (enPrison>0){
+            return string+"En prison pour "+enPrison+" tours";
+        }else{
+            return string;
+        }
+    }
 }
