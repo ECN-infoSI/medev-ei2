@@ -26,8 +26,32 @@ public class Achetable extends Case {
         proprietaire = j;
     }
 
-    public int calculLoyer(){
-
+    public int getPrix() {
+        return prix;
     }
 
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
+
+    public Joueur getProprietaire() {
+        return proprietaire;
+    }
+
+    public void setProprietaire(Joueur proprietaire) {
+        this.proprietaire = proprietaire;
+    }
+
+    public int calculLoyer(){}
+
+    /**
+     * @param j Le joueur arrivé sur la case
+     * 
+     * Cette action est possible seulement si la case n'a pas encore de proprietaire.
+     */
+    public void acheter(Joueur j){
+        if (j.fortune > this.prix){
+            j.paiement(this.prix);
+            this.proprietaire = j;    
+    }
 }

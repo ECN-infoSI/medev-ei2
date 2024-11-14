@@ -22,7 +22,7 @@ public class Gare extends Achetable {
     }
 
     public int calculLoyer(){
-        if !(proprietaire == null){
+        if !(this.proprietaire == null){
             return baseLoyer*proprietaire.nbGares();
         } else {
             return 0;
