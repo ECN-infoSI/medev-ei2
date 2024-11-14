@@ -65,7 +65,7 @@ public class Joueur {
 
 
     public Integer nbGares() {
-
+        return plateau.nbGares(this);
     }
 
     public void paiement(Joueur j, Integer x) {
