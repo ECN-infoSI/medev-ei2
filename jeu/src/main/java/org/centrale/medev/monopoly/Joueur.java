@@ -134,26 +134,33 @@ public class Joueur {
     }
 
 
-    private void actionCase(Integer valeurDe, Case case_action){
-        if (case_action instanceof Evenement){
+    private void actionCase(Integer valeurDe, Case case_action) throws NoMoreMoneyException {
+        if (case_action instanceof Evenement) {
             case_action.effet(this);
-        } else if (case_action instanceof Achetable && case_action.getProprietaire() == null){
-            if ((valeurDe)%2 == 1){
+        } else if ((case_action instanceof Achetable) && case_action.getProprietaire() == null) {
+            if ((valeurDe) % 2 == 1) {
                 this.achete(case_action);
-            } else if (case_action instanceof Achetable and case_action.getProprietaire()!=null){
-            this.payeLoyer((Achetable)case_action);
+            } else if (case_action instanceof Achetable and case_action.getProprietaire() != null){
+                this.payeLoyer((Achetable) case_action);
+            }
+        } else if ((case_action instanceof Rue) && case_action.getProprietaire() == this) {
+            if (case_action.getNbM()<4 && case_action.getNbH()==0){
+                case_action.construireMaison(1);
+            } else if(case_action.getNbM()==4) {
+                case_action.construireHotel();
+            }
         }
     }
     /**
      * Gère le tour de jeu d'un Joueur
      */
-    public void tourDeJeu() {
+    public void tourDeJeu() throws NoMoreMoneyException {
         Boolean finTour = false;
         int nbLances = 0;
         
         while (!finTour){
             nbLances += 1;
-            finTour = tourDeJeuAux(nbLances);
+            finTour = this.tourDeJeuAux(nbLances);
         }
         
     }
@@ -163,7 +170,7 @@ public class Joueur {
         this.setPosition(10);
     }
 
-    private Boolean tourDeJeuAux(Integer nbLances) {
+    private Boolean tourDeJeuAux(Integer nbLances) throws NoMoreMoneyException{
         int de1 = lanceLeDe();
         int de2 = lanceLeDe();
         int tot = de1 + de2;
@@ -187,7 +194,7 @@ public class Joueur {
      * Permet au joueur de payer le loyer au joueur de la case sur laquelle il est tombe si elle a un proprietaire
      * @param caseOccupee correspond a la case sur laquelle se situe le joueur et qu'elle appartient a un autre joueur
      */
-    public void payeLoyer(Achetable caseOccupee){
+    public void payeLoyer(Achetable caseOccupee)  throws NoMoreMoneyException {
         this.paiement(caseOccupee.getPropritaire(),caseOccupee.calculLoyer());
     }
     /**
