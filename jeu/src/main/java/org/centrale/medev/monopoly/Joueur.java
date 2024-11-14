@@ -31,6 +31,16 @@ public class Joueur {
      */
     private Integer enPrison;
 
+    /**
+     * Constructeur d'un Joueur
+     * @param nom Nom du nouveau Joueur
+     * @param plateau Plateau lié au nouveau Joueur
+     * 
+     * On initialise :
+     *  - fortune : 100000
+     *  - position : 
+     *  - enPrison : 0
+     */
     public Joueur(String nom, Plateau plateau) {
         this.nom = nom;
         this.fortune = 100000;
@@ -79,23 +89,42 @@ public class Joueur {
         this.enPrison = enPrison;
     }
 
-
+    /**
+     * Renvoie le nombre de gares possédées par le joueur
+     * @return Nombre de gares possédées
+     */
     public Integer nbGares() {
         return plateau.nbGares(this);
     }
 
+    /**
+     * Effectue le paiement de x au Joueur j
+     * @param j Joueur à payer
+     * @param x Montant à payer
+     */
     public void paiement(Joueur j, Integer x) {
 
     }
 
+    /**
+     * Lance un dé à 6 faces
+     * @return 1d6
+     */
     public static int lanceLeDe() {
         return ((int) Math.floor(Math.random()*6))+1;
     }
 
+    /**
+     * Fait avancer le Joueur de x cases
+     * @param x Nombre de cases
+     */
     private void nouvellePos(Integer x) {
         this.setPosition((this.getPosition() + x)%40);
     }
 
+    /**
+     * Gère le tour de jeu d'un Joueur
+     */
     public void tourDeJeu() {
         int de = lanceLeDe();
         this.nouvellePos(de);
