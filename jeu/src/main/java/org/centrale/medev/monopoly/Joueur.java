@@ -146,18 +146,23 @@ public class Joueur {
         
     }
 
+    public void goToPrison() {
+        this.setEnPrison(3);
+        this.setPosition(this.getPlateau().getPlateau().get(10));
+    }
+
     private Boolean tourDeJeuAux(Integer nbLances) {
         int de1 = lanceLeDe();
         int de2 = lanceLeDe();
         Boolean finTour = (de1 != de2);
 
         if (nbLances == 3 && !finTour) {
-            this.setEnPrison(3);
-        } else if (this.getEnPrison()>0) {
-
+            this.goToPrison();
+        } else if (this.getEnPrison()>0 && !finTour) {
+            
         }
 
-        //TODO faire des actions en fonction de la case (proprio...)
+        
         return finTour;
     }
 
