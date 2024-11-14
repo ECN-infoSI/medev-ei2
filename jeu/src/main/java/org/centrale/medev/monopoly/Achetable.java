@@ -49,7 +49,7 @@ public class Achetable extends Case {
      * 
      * Cette action est possible seulement si la case n'a pas encore de proprietaire.
      */
-    public void acheter(Joueur j){
+    public void acheter(Joueur j) throws NoMoreMoneyException{
         if (j.getFortune() > this.prix){
             j.paiement(this.prix);
             this.proprietaire = j; 
