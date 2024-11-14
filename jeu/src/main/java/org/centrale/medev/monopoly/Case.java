@@ -44,4 +44,20 @@ public class Case {
         String msg = this.nom ;
         return msg;
     }
+
+    public String getNom(){
+        return this.nom;
+    }
+
+    public int getPosition(){
+        return this.position;
+    }
+
+    public void setNom(String n){
+        this.nom = n ;
+    }
+
+    public void setPosition(int n){
+        this.position = n ;
+    }
 }
