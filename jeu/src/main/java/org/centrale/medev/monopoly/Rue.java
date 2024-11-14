@@ -14,6 +14,11 @@ public class Rue extends Achetable{
     private int nbM;
     private int nbH;
 
+    final int coutM = 150;
+    final int loyerM = 200;
+    final int loyerH = 1200;
+    final int loyerBase = 100;
+
     public Rue() {
         super();
         this.nbM = 0;
@@ -37,7 +42,7 @@ public class Rue extends Achetable{
     }
     
     public void construireMaison(int nbMConstruite){
-        if (this.proprietaire.getFortune() >= nbMConstruite*150 && nbMConstruite <= 4){
+        if (this.proprietaire.getFortune() >= nbMConstruite*this.coutM && nbMConstruite + this.nbM <= 4){
             int newNbM = this.getNbM() + nbMConstruite;
             this.setNbM(newNbM);
             int newFortune = this.proprietaire.getFortune() - nbMConstruite*150;
@@ -48,9 +53,9 @@ public class Rue extends Achetable{
         }
     }
     
-    public void construireHotel(int nbHConstruit){
-        int cout = 1000 - this.nbM*200;
-        if (this.proprietaire.getFortune() >= cout && nbHConstruit == 0){
+    public void construireHotel(){
+        int cout = (5 - this.nbM)*this.coutM;
+        if (this.proprietaire.getFortune() >= cout && this.nbH == 0){
             this.setNbH(1);
             this.setNbM(0);
             int newFortune = this.proprietaire.getFortune() - cout;
@@ -62,11 +67,8 @@ public class Rue extends Achetable{
     }
     
     public int calculLoyer(){
-        int a = 200;
-        int b = 1200;
-        int base = 100;
-        int loyer = this.getNbH()*a + this.getNbM()*b;
-        if (loyer==0){loyer = base;}
+        int loyer = this.getNbH()*this.loyerH + this.getNbM()*this.loyerM;
+        if (loyer==0){loyer = this.loyerBase;}
         return loyer;
     }
     
