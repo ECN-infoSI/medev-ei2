@@ -27,11 +27,10 @@ public class Plateau {
     }
     
     public void initPlateau() throws FileNotFoundException, IOException{
-        System.out.println("Inserez le nombre de joueurs: ");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Inserez le nombre de joueurs: ");  
         
         try {
-        
+            Scanner sc = new Scanner(System.in);
             int nbJoueurs = sc.nextInt();
 
             while (nbJoueurs < 2 || nbJoueurs > 10) {
@@ -39,8 +38,11 @@ public class Plateau {
                 nbJoueurs = sc.nextInt();           
             }
             
+            sc = new Scanner(System.in);
             for (int i = 0; i < nbJoueurs; i++) {
-                Joueur j = new Joueur();
+                System.out.println("Inserez le nom du joueur " + (i+1) + ": ");
+                String nomJoueur = sc.nextLine();
+                Joueur j = new Joueur(nomJoueur);
                 joueurs.add(j);
             }
             
@@ -54,7 +56,6 @@ public class Plateau {
                         String className = parties[0];
                         String caseNom = parties[1];
                         int position = Integer.parseInt(parties[2]);
-                        System.out.println(position);
                         if (null != className) switch (className) {
                             
                             case "Gare" -> {
