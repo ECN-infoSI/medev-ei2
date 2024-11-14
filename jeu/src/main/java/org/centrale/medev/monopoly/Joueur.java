@@ -148,7 +148,7 @@ public class Joueur {
             case_action.effet(this);
         } else if ((case_action instanceof Achetable) && case_action.getProprietaire() == null) {
             if ((valeurDe) % 2 == 1) {
-                this.achete(case_action);
+                this.achete((Achetable) case_action);
             } else if (case_action instanceof Achetable && case_action.getProprietaire() != null){
                 this.payeLoyer((Achetable) case_action);
             }
