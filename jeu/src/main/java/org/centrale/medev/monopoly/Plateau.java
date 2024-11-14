@@ -193,7 +193,7 @@ public class Plateau {
 
         // On trie les cases qui sont achetables
         if (this.plateau.get(i) instanceof Achetable) {
-            boolean proprietaire = j.equals(this.plateau.get(i).getProprietaire());
+            boolean proprietaire = j.equals(((Achetable)this.plateau.get(i)).getProprietaire());
             if (proprietaire) {
                 System.out.println(this.plateau.get(i).toString());
                 System.out.println("---");
