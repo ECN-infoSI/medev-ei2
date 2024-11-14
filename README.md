@@ -29,4 +29,4 @@ Le projet a été segmenté en trois parties/équipes :
 
 ## Diagramme de Classes
 
-![Diagramme de Classes v1](./DiagrammeClasses.jpg)
+![Diagramme de Classes v1.1](./DiagrammeClasses.jpg)
