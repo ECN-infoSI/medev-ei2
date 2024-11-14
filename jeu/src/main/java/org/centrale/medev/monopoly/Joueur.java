@@ -23,6 +23,47 @@ public class Joueur {
         this.enPrison = 0;
     }
 
+    public String getNom() {
+        return this.nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Integer getFortune() {
+        return this.fortune;
+    }
+
+    public void setFortune(Integer fortune) {
+        this.fortune = fortune;
+    }
+
+    public Plateau getPlateau() {
+        return this.plateau;
+    }
+
+    public void setPlateau(Plateau plateau) {
+        this.plateau = plateau;
+    }
+
+    public Integer getPosition() {
+        return this.position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public Integer getEnPrison() {
+        return this.enPrison;
+    }
+
+    public void setEnPrison(Integer enPrison) {
+        this.enPrison = enPrison;
+    }
+
+
     public Integer nbGares() {
 
     }
@@ -35,7 +76,12 @@ public class Joueur {
         return ((int) Math.floor(Math.random()*6))+1;
     }
 
+    private void nouvellePos(Integer x) {
+        this.setPosition((this.getPosition() + x)%40);
+    }
+
     public void tourDeJeu() {
-        
+        int de = lanceLeDe();
+        this.nouvellePos(de);
     }
 }
