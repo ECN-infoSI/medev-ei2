@@ -125,13 +125,23 @@ public class Joueur {
     }
 
     /**
-     * Fait avancer le Joueur de x cases
-     * @param x Nombre de cases
+     * Fait avancer le Joueur de valeurDe cases
+     * @param valeurDe Nombre de cases
      */
-    private void nouvellePos(Integer x) {
-        this.setPosition(plateau.avance(this.getPosition(), x));
+    private void nouvellePos(Integer valeurDe) {
+        this.setPosition(plateau.avance(this.getPosition(), valeurDe));
     }
 
+
+    private void actionCase(Integer valeurDe, Case case){
+        if (case instanceof AllerPrison){
+            enPrison = 3;
+        } else if (case instanceof Achetable and case.getProprietaire() == null){
+            if ((valeurDe)%2 == 1){
+                this.achete(case);
+            }
+        }
+    }
     /**
      * Gère le tour de jeu d'un Joueur
      */
@@ -165,6 +175,27 @@ public class Joueur {
         
         return finTour;
     }
+    /**
+     * Permet au joueur de payer le loyer au joueur de la case sur laquelle il est tombe si elle a un proprietaire
+     * @param caseOccupee correspond a la case sur laquelle se situe le joueur et qu'elle appartient a un autre joueur
+     */
+    public void payeLoyer(Achetable caseOccupee){
+        this.paiement(caseOccupee.getPropritaire(),caseOccupee.calculLoyer());
+    }
+    /**
+     * Permet d'acheter une case lorsque le joueur a une fortune assez grande
+     * @param caseOccupee  correspond a la case sur laquelle se situe le joueur et qu'elle n'appartient a personne
+     */
+    public void achete(Achetable caseOccupee){
+        int prix = caseOccupee.getPrix();
+        
+        if (this.fortune >= prix){
+            this.fortune-=prix;
+            caseOccupee.setProprietaire(this);
+        }
+        
+    }
+    
 
     /**
      * Affiche la position du Joueur
