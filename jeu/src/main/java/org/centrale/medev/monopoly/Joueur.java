@@ -12,7 +12,7 @@ public class Joueur {
     private String nom;
     private Integer fortune;
     private Plateau plateau;
-    private Integer position;
+    private Case position;
     private Integer enPrison;
 
     public Joueur(String nom, Plateau plateau) {
@@ -47,11 +47,11 @@ public class Joueur {
         this.plateau = plateau;
     }
 
-    public Integer getPosition() {
+    public Case getPosition() {
         return this.position;
     }
 
-    public void setPosition(Integer position) {
+    public void setPosition(Case position) {
         this.position = position;
     }
 
@@ -77,7 +77,7 @@ public class Joueur {
     }
 
     private void nouvellePos(Integer x) {
-        this.setPosition((this.getPosition() + x)%40);
+        this.setPosition(plateau.avance(this.getPosition(), x));
     }
 
     public void tourDeJeu() {
