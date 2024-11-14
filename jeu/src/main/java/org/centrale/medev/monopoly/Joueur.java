@@ -136,7 +136,19 @@ public class Joueur {
      * Gère le tour de jeu d'un Joueur
      */
     public void tourDeJeu() {
-        int de = lanceLeDe();
-        this.nouvellePos(de);
+         int de1 = lanceLeDe();
+        int de2 = lanceLeDe();
+        if (this.enPrison>0){
+            if (de1 == de2){
+                enPrison = 0;
+            }
+        }
+            this.nouvellePos(de1+de2);
+            //TODO faire des actions en fonction de la case (proprio...)
+            while (de1 == de2){
+                //TODO refaire des actions
+                //TODO relancer les dés
+            }
+        
     }
 }
