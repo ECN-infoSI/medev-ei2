@@ -106,17 +106,14 @@ public class Joueur {
      * @param joueur Joueur à payer
      * @param somme Montant à payer
      */
-    public void paiement(Joueur adversaire, Integer somme) {
-        
-        try{
+    public void paiement(Joueur adversaire, Integer somme) throws NoMoreMoneyException {
+
             if (fortune >= somme){
                         fortune-=somme;
                         adversaire.setFortune(getFortune()+somme);
+            }else{
+                throw new NoMoreMoneyException("Pas assez d'argent");
             }
-        }
-        catch(NoMoreMoney exc){
-            System.out.println("vous n'avez pas assez d'argent");
-        }
         
     }
 
@@ -211,5 +208,17 @@ public class Joueur {
      */
     public void affiche() {
         System.out.println("Le joueur " + this.getNom() + " est en " + this.getPosition().getPosition());
+    }
+
+    @Override
+    public String toString() {
+        String string = "nom='" + nom +
+                ", fortune=" + fortune +
+                ", position=" + position.toString();
+        if (enPrison>0){
+            return string+"En prison pour "+enPrison+" tours";
+        }else{
+            return string;
+        }
     }
 }

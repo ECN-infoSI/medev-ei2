@@ -9,8 +9,8 @@ package org.centrale.medev.monopoly;
  *
  * @author Amolz
  */
-public class NoMoreMoney extends Exception {
-    public NoMoreMoney(String error){
+public class NoMoreMoneyException extends Exception {
+    public NoMoreMoneyException(String error){
 	super(error);
 	}
 }
