@@ -81,6 +81,10 @@ public class Joueur {
         this.position = position;
     }
 
+    public void setPosition(Integer position) {
+        this.setPosition(this.getPlateau().getPlateau().get(position));
+    }
+
     public Integer getEnPrison() {
         return this.enPrison;
     }
@@ -158,18 +162,23 @@ public class Joueur {
 
     public void goToPrison() {
         this.setEnPrison(3);
-        this.setPosition(this.getPlateau().getPlateau().get(10));
+        this.setPosition(10);
     }
 
     private Boolean tourDeJeuAux(Integer nbLances) {
         int de1 = lanceLeDe();
         int de2 = lanceLeDe();
+        int tot = de1 + de2;
         Boolean finTour = (de1 != de2);
 
         if (nbLances == 3 && !finTour) {
             this.goToPrison();
-        } else if (this.getEnPrison()>0 && !finTour) {
-            
+        } else if (this.getEnPrison()>0) {
+            if (!finTour) {
+                this.nouvellePos(tot);
+            }
+        } else {
+            this.nouvellePos(tot);
         }
 
         
