@@ -139,4 +139,11 @@ public class Joueur {
         int de = lanceLeDe();
         this.nouvellePos(de);
     }
+
+    /**
+     * Affiche la position du Joueur
+     */
+    public void affiche() {
+        System.out.println("Le joueur " + this.getNom() + " est en " + this.getPosition().getPosition())
+    }
 }
