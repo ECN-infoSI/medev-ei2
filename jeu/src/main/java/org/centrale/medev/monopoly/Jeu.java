@@ -5,12 +5,16 @@
 package org.centrale.medev.monopoly;
 
 /**
- *
- * @author hanss
+ * Script Principal du jeu
+ * @author simon
  */
 public class Jeu {
-
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Plateau plateau = new Plateau();
+	    
+	plateau.initPlateau();
+	plateau.tourDeJeu();
+
+	System.out.println("Fin de la partie, merci d'avoir utiliser notre jeu !");
     }
 }

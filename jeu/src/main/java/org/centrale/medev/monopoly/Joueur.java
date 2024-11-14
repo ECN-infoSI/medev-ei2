@@ -10,4 +10,7 @@ package org.centrale.medev.monopoly;
  */
 public class Joueur {
     
+    public static int lanceLeDe() {
+        return ((int) Math.floor(Math.random()*6))+1;
+    }
 }
