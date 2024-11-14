@@ -1,5 +1,7 @@
 # Monopoly - MEDEV (EI2)
 
+Rapport : [Google Docs](https://docs.google.com/document/d/1aSimT0o8QkMoVoalPzR4vFFT4kl3dkfxN9x6mBdY-sM/edit?usp=sharing)
+
 ## Organisation
 
 Le projet a été segmenté en trois parties/équipes :
@@ -24,8 +26,6 @@ Le projet a été segmenté en trois parties/équipes :
     - Lorenzo Barbo
     - Paul MAUNY
     - Nadhem BEN WAHIDA
-
-[Google Docs](https://docs.google.com/document/d/1aSimT0o8QkMoVoalPzR4vFFT4kl3dkfxN9x6mBdY-sM/edit?usp=sharing)
 
 ## Diagramme de Classes
 
