@@ -21,11 +21,11 @@ public class Joueur {
      * Plateau associé au joueur
      */
     private Plateau plateau;
-    private Case position;
     /**
      * Position du joueur sur le plateau
      * Le plateau compte 40 cases
      */
+    private Case position;
     /**
      * Temps restant immobilisé en prison
      */
@@ -45,7 +45,7 @@ public class Joueur {
         this.nom = nom;
         this.fortune = 100000;
         this.plateau = plateau;
-        this.position = 0;
+        this.position = plateau.getPlateau().get(0);
         this.enPrison = 0;
     }
 
@@ -136,20 +136,29 @@ public class Joueur {
      * Gère le tour de jeu d'un Joueur
      */
     public void tourDeJeu() {
-         int de1 = lanceLeDe();
-        int de2 = lanceLeDe();
-        if (this.enPrison>0){
-            if (de1 == de2){
-                enPrison = 0;
-            }
-        }
-            this.nouvellePos(de1+de2);
-            //TODO faire des actions en fonction de la case (proprio...)
-            while (de1 == de2){
-                //TODO refaire des actions
-                //TODO relancer les dés
-            }
+        Boolean finTour = false;
+        int nbLances = 0;
         
+        while (!finTour){
+            nbLances += 1;
+            finTour = tourDeJeuAux(nbLances);
+        }
+        
+    }
+
+    private Boolean tourDeJeuAux(Integer nbLances) {
+        int de1 = lanceLeDe();
+        int de2 = lanceLeDe();
+        Boolean finTour = (de1 != de2);
+
+        if (nbLances == 3 && !finTour) {
+            this.setEnPrison(3);
+        } else if (this.getEnPrison()>0) {
+
+        }
+
+        //TODO faire des actions en fonction de la case (proprio...)
+        return finTour;
     }
 
     /**
