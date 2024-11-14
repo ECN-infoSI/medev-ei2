@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.*;
+import java.util.Iterator;
 
 
 public class Plateau {
@@ -111,10 +112,11 @@ public class Plateau {
     public int nbGare(Joueur j) {
         int count = 0;
         for (Case c : plateau) {
-            // Check if the case is an instance of Gare
+            // Vérifier si le cas est une instance de Gare
+
             if (c instanceof Gare) {
-                Gare gare = (Gare) c; // Cast to Gare
-                // Check if the owner of this Gare is the specified player
+                Gare gare = (Gare) c; // Cast à Gare
+                // Vérifier si le propriétaire de cette Gare est le joueur spécifié
                 if (gare.getProprietaire() == j) {
                     count++;
                 }
@@ -126,19 +128,21 @@ public class Plateau {
     public void affiche() {
         System.out.println("=== État du Plateau ===");
 
-        // Display Cases on the Plateau
+        // Montrer les Cases dans le Plateau
         System.out.println("Cases du plateau:");
         for (Case c : plateau) {
             System.out.println(" - " + c.toString());
         }
 
-        // Display Players
+        // Montrer les Players
         System.out.println("\nJoueurs:");
         for (Joueur j : joueurs) {
             System.out.println(" - " + j.toString());
+            System.out.println("Liste de proprietés: ");
+            afficheCaseJoueur(j);
         }
 
-        // Display Pot Commun
+        // Montrer le Pot Commun
         System.out.println("\nPot Commun: " + potCommun + "€");
     }
     
@@ -153,10 +157,51 @@ public class Plateau {
         return nbJoueursInit - this.joueurs.size() >=  2;
     }
 
-    public void tourDeJeu(){
+    public void tourDeJeu() {
         
+        Iterator<Joueur> iterator = joueurs.iterator();
+
+        while (iterator.hasNext()) {
+            Joueur player = iterator.next();
+            
+            // Continuer le jeu pendant que finDePartie() renvoie un message faux
+            while (!finDePartie()) {
+                
+                // Montrer le monde au début d'un tour de jeu
+                affiche();
+                
+                // Appeler la méthode tourDeJeu du joueur pour effectuer son tour
+                player.tourDeJeu();
+
+                // Vérifier si la fortune du joueur est inférieure ou égale à 0 (ce qui indique qu'il est vaincu).
+                if (player.getFortune() <= 0) {
+                    System.out.println("Le joueur " + player.getNom() + " est éliminé (fortune <= 0).");
+
+                    // Retirer le joueur vaincu du jeu en utilisant l'itérateur
+                    iterator.remove();
+                }
+            }
+            break;
+        }
+
+        System.out.println("La partie est terminée !");
     }
 
+    public void afficheCaseJoueur(Joueur j){
+    int i = 0;
+   
+    // On analyse toutes les cases du plateau
+    while(i < this.plateau.size()){
 
-
+        // On trie les cases qui sont achetables
+        if (this.plateau.get(i) instanceof Achetable) {
+            boolean proprietaire = j.equals(this.plateau.get(i).getProprietaire());
+            if (proprietaire) {
+                System.out.println(this.plateau.get(i).toString());
+                System.out.println("---");
+            }
+        }
+        i++;
+    }
+}
 }
