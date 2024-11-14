@@ -1,18 +1,14 @@
-package org.centrale.medev.monopoly
+package org.centrale.medev.monopoly;
 
 public class AllerPrison extends Evenement{
     private Joueur joueur ;
     
     public AllerPrison(String nom, int position){
-        super(position,nom) ;
+        super(nom, position);
     }
     
     public AllerPrison(){
         super() ;
-    }
-    
-    public AllerPrison(AllerPrison ap){
-        super(ap) ;
     }
     
     public void effet(){
