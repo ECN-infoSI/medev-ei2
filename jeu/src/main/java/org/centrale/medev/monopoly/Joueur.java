@@ -4,6 +4,8 @@
  */
 package org.centrale.medev.monopoly;
 
+import org.centrale.medev.monopoly.NoMoreMoneyException;
+
 /**
  *
  * @author hanss
@@ -82,7 +84,7 @@ public class Joueur {
     }
 
     public void setPosition(Integer position) {
-        this.setPosition(this.getPlateau().getPlateau().get(position));
+        this.setPosition(this.getPlateau().get(position));
     }
 
     public Integer getEnPrison() {
@@ -101,22 +103,29 @@ public class Joueur {
         return plateau.nbGares(this);
     }
 
+    
+    public void paiement(int somme) throws NoMoreMoneyException{
+        if (fortune >= somme){
+            fortune-=somme;
+        }
+        else{
+            throw new NoMoreMoneyException("Pas assez d'argent");
+        }
+    }
+
+    
+    
     /**
      * Effectue le paiement de x au Joueur j
      * @param adversaire Joueur à payer
      * @param somme Montant à payer
      */
     public void paiement(Joueur adversaire, Integer somme) throws NoMoreMoneyException {
-
-            if (fortune >= somme){
-                        fortune-=somme;
-                        adversaire.setFortune(getFortune()+somme);
-            }else{
-                throw new NoMoreMoneyException("Pas assez d'argent");
-            }
-        
+        paiement(somme);
+        adversaire.setFortune(adversaire.getFortune()+somme);
     }
 
+    
     /**
      * Lance un dé à 6 faces
      * @return 1d6
