@@ -33,7 +33,7 @@ public class Carte extends Evenement {
         if (this.getNom() =="argent_moins"){
             Random random = new Random() ;
             int y = random.nextInt(500)+250 ;
-            joueur.setFortune(joueur.getFortune()-y);
+            joueur.paiement(y) ;
             System.out.print("Vous avez perdu "+y+ "euros. Votre fortune est de : " + joueur.getFortune()) ;
         }
 

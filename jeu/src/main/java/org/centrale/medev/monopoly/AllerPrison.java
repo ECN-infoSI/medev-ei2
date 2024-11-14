@@ -1,4 +1,4 @@
-package org.centrale.medev.monopoly;
+package org.centrale.medev.monopoly ;
 
 public class AllerPrison extends Evenement{
     private Joueur joueur ;
