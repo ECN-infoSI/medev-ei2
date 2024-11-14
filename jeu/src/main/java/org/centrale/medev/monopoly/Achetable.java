@@ -42,7 +42,7 @@ public class Achetable extends Case {
         this.proprietaire = proprietaire;
     }
 
-    public int calculLoyer(){}
+    public int calculLoyer(){return 0;}
 
     /**
      * @param j Le joueur arrivé sur la case
@@ -50,8 +50,22 @@ public class Achetable extends Case {
      * Cette action est possible seulement si la case n'a pas encore de proprietaire.
      */
     public void acheter(Joueur j){
-        if (j.fortune > this.prix){
+        if (j.getFortune() > this.prix){
             j.paiement(this.prix);
-            this.proprietaire = j;    
+            this.proprietaire = j; 
+        }   
+    }
+
+    @Override
+    public String toString(){
+        String msg = this.getNom();
+        msg = msg + "coût : " + String.valueOf(this.prix) + " - " ;
+        if (this.proprietaire == null){
+            msg = msg + "sans propriétaire";
+        }
+        else {
+            msg = msg + "propriétaire : " + this.proprietaire.getNom() + " - " + "fortune : " + String.valueOf(this.proprietaire.getFortune()); 
+        }
+        return msg;
     }
 }
