@@ -6,6 +6,7 @@ Rapport : [Google Docs](https://docs.google.com/document/d/1aSimT0o8QkMoVoalPzR4
 
 Le projet a été segmenté en trois parties/équipes :
 
+- Chef de Projet : Simon BLANCHARD 
 - Plateau
     - Clara MATTOS
     - Fernando ROJAS
