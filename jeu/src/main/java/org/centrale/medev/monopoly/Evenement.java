@@ -1,19 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package org.centrale.medev.monopoly;
-
-/**
- *
- * @author PRO
- */
+package org.centrale.medev.monopoly ;
+    
 public class Evenement extends Case{
     
-    public Evenement(String n, int pos){
-        super(n, pos);
+    public Evenement(int position, String nom){
+        super(position,nom);
     }
-    public Evenement(){  
-        super();
-    }    
+    public Evenement(){
+        super() ;
+    }
+    public Evenement(Evenement e){
+        super(e) ;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
 }
