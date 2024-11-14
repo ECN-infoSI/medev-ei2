@@ -45,7 +45,7 @@ public class Joueur {
      */
     public Joueur(String nom, Plateau plateau) {
         this.nom = nom;
-        this.fortune = 100000;
+        this.fortune = 1000;
         this.plateau = plateau;
         this.position = plateau.getPlateau().get(0);
         this.enPrison = 0;

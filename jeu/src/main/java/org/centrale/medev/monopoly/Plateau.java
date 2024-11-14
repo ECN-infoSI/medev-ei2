@@ -166,14 +166,15 @@ public class Plateau {
     }
 
     public void tourDeJeu() {
-        
+        // Continuer le jeu pendant que finDePartie() renvoie un message faux
+        while (!finDePartie()) {
+
         Iterator<Joueur> iterator = joueurs.iterator();
 
         while (iterator.hasNext()) {
             Joueur player = iterator.next();
             
-            // Continuer le jeu pendant que finDePartie() renvoie un message faux
-            while (!finDePartie()) {
+
                 
                 // Montrer le monde au début d'un tour de jeu
                 affiche();
@@ -187,7 +188,6 @@ public class Plateau {
                     System.out.println("Le joueur " + player.getNom() + " est éliminé (fortune <= 0).");
                 }
             }
-            break;
         }
 
         System.out.println("La partie est terminée !");
