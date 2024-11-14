@@ -156,6 +156,6 @@ public class Joueur {
      * Affiche la position du Joueur
      */
     public void affiche() {
-        System.out.println("Le joueur " + this.getNom() + " est en " + this.getPosition().getPosition())
+        System.out.println("Le joueur " + this.getNom() + " est en " + this.getPosition().getPosition());
     }
 }
