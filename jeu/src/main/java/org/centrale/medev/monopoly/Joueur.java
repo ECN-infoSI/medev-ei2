@@ -135,8 +135,8 @@ public class Joueur {
 
 
     private void actionCase(Integer valeurDe, Case case_action){
-        if (case_action instanceof AllerPrison){
-            this.goToPrison();
+        if (case_action instanceof Evenement){
+            case_action.effet(this);
         } else if (case_action instanceof Achetable && case_action.getProprietaire() == null){
             if ((valeurDe)%2 == 1){
                 this.achete(case_action);
