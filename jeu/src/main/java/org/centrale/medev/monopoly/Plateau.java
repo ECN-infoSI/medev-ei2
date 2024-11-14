@@ -13,11 +13,11 @@ import java.util.Scanner;
 import java.io.*;
 
 
-
 public class Plateau {
     private ArrayList<Case> plateau;
     private LinkedList<Joueur> joueurs;
     private int potCommun;
+    private int nbJoueursInit;
     
     public Plateau() throws IOException {
         plateau = new ArrayList<Case>();
@@ -27,38 +27,43 @@ public class Plateau {
     }
     
     public void initPlateau() throws FileNotFoundException, IOException{
+        // Crée la liste de joueurs
         System.out.println("Inserez le nombre de joueurs: ");  
         
         try {
             Scanner sc = new Scanner(System.in);
-            int nbJoueurs = sc.nextInt();
+            nbJoueursInit = sc.nextInt();
 
-            while (nbJoueurs < 2 || nbJoueurs > 10) {
+            while (nbJoueursInit < 2 || nbJoueursInit > 10) {
                 System.out.println("Le minimum de joueurs est 2 et le maximum est 10. \nInserez le nombre de joueurs: ");
-                nbJoueurs = sc.nextInt();           
+                nbJoueursInit = sc.nextInt();           
             }
             
             sc = new Scanner(System.in);
-            for (int i = 0; i < nbJoueurs; i++) {
+            for (int i = 0; i < nbJoueursInit; i++) {
                 System.out.println("Inserez le nom du joueur " + (i+1) + ": ");
                 String nomJoueur = sc.nextLine();
+                // Créer chaque joueur
                 Joueur j = new Joueur(nomJoueur);
                 joueurs.add(j);
             }
             
+            // Lire le fichier commum "Liste_Cases.txt" qui décrit un tableau Monopoly
             InputStream inputStream = Plateau.class.getResourceAsStream("/Liste_Cases.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                 String line;
                 while ((line = br.readLine()) != null) {
-                    // Dividir la línea en dos partes: nombre de clase y atributo nombre
+                    // Diviser une ligne en 3 parties: le nom de la classe, le nom d'objet et la position de la case
                     String[] parties = line.split(" ");
                     if (parties.length >= 3) {
                         String className = parties[0];
                         String caseNom = parties[1];
                         int position = Integer.parseInt(parties[2]);
+                        
                         if (null != className) switch (className) {
-                            
+                            // Pour chaque type possible de case, initialiser la case et l'ajouter au plateau
                             case "Gare" -> {
+                                // Certaines cases ont un valeur monnetaire
                                 int valeur = Integer.parseInt(parties[3]);
                                 Gare n = new Gare(caseNom, position, valeur);
                                 plateau.add(n);
@@ -137,13 +142,15 @@ public class Plateau {
         System.out.println("\nPot Commun: " + potCommun + "€");
     }
     
-    public Case avance(Case c, int d){
-        return c;
+    public Case avance(Case c, int d) {
+        int pos = c.getPosition();
+        // Traiter le tour complet avec le reste de la division pour 40
+        return this.plateau.get((pos + d) % 40);
     }
 
-    public boolean finDePartie(){
-        return false;
-        
+    public boolean finDePartie() {
+        // La partie est finie une fois que au moins 2 joueurs ont perdu
+        return nbJoueursInit - this.joueurs.size() >=  2;
     }
 
     public void tourDeJeu(){
